@@ -1,11 +1,7 @@
 const prompt = require ("prompt-sync")()
 function splice(arr, i) {
-    let tmp;
     for (i ; i < arr.length; i++) {
-
-        tmp = arr[i];
       arr[i] = arr[i + 1]
-
     }
     arr.length --;
     return (arr);
@@ -181,24 +177,25 @@ function Afficher_liste(){
     switch(choix_3){
         case 1 :
             const Tri = [...Candidat]
-                for (let i=0;i<Tri.length;i++){
-                    for(let j=i+1;j<Tri.length;j++){
-                        if(Tri[i].Electeurs.length<Tri[j].Electeurs.length){
-                            swp = Tri[i]
-                            Tri [i] = Tri[j]
-                            Tri [j] = swp
-                        }
+            let swp
+            for (let i=0;i<Tri.length;i++){
+                for(let j=i+1;j<Tri.length;j++){
+                    if(Tri[i].Electeurs.length<Tri[j].Electeurs.length){
+                        swp = Tri[i]
+                        Tri [i] = Tri[j]
+                        Tri [j] = swp
                     }
-                    Afficher(Tri,i)
                 }
-               break
+                Afficher(Tri,i)
+            }
+           break
         case 2 :
             const choix_politique = prompt("Choisez la parti politique : ")
-                for (i=0;i<Candidat.length;i++){
-                    if(Candidat[i].Parti_Politique === choix_politique){
-                        Afficher(Candidat,i)
-                    }
+            for (i=0;i<Candidat.length;i++){
+                if(Candidat[i].Parti_Politique === choix_politique){
+                    Afficher(Candidat,i)
                 }
+            }
             break
         case 3 :
             for(i=0;i<Candidat.length;i++){
@@ -361,6 +358,7 @@ function Statistiques(){
         case 4:
             console.log("                                ==============================================================\n")
             const Tri = [...Candidat]
+            let swp
             for (let i=0;i<Tri.length;i++){
                 for(let j=i+1;j<Tri.length;j++){
                     if(Tri[i].Parti_Politique>Tri[j].Parti_Politique){
